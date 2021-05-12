@@ -1,0 +1,24 @@
+{
+  "name": "automationwithcocumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Cypress Project",
+  "scripts": {
+    "test": "test",
+    "cypress:open": "cypress open"
+  },
+  "author": "MO",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^7.2.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "cypress-cucumber-preprocessor": "^4.1.0",
+    "cypress-promise": "^1.1.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}
