@@ -1,9 +1,9 @@
 const ServiceAdress={
     
     login:'sso/login',
-    search_package:'tpu/transport-units',
+    searchPackage:'tpu/transport-units',
     carriers:'crlm/carriers',
-    roles_manage: 'idm/roles'
+    rolesManage: 'idm/roles'
 }
 
 export default ServiceAdress

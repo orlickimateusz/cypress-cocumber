@@ -1,43 +1,43 @@
 /// <reference types="cypress" />
 
-import ActionsLogin from '../../pages/actions.login'
+import LoginAction from '../../pages/actions.login'
 import LoginConstants from '../../constants/login.constants'
-import ActionsConfig from '../../pages/supporting-methods/actions.config'
-import GeneralActions from '../../pages/supporting-methods/actions.general'
+import ConfigAction from '../../pages/supporting-methods/actions.config'
+import GeneralAction from '../../pages/supporting-methods/actions.general'
 
 
 Given('I Navigate to the website', ()=>{
-    ActionsLogin.navigate_to_url(ActionsConfig.set_environment())
+    LoginAction.navigateToUrl(ConfigAction.setEnvironment())
 })
 
 When('I type the wrong username', ()=>{
-    ActionsLogin.enter_username(LoginConstants.wrong_username)
+    LoginAction.enterUsername(LoginConstants.wrongUsername)
 })
 
 When('Login view is visible', ()=>{
-    ActionsLogin.is_login_view_visible()
+    LoginAction.isLoginViewVisible()
 })
 
 When('I verify am I logged', ()=>{
-    ActionsLogin.verify_page()
+    LoginAction.verifyPage()
 })
 
 When('I type the password', ()=>{
-    ActionsLogin.enter_password(ActionsConfig.set_password())
+    LoginAction.enterPassword(ConfigAction.setPassword())
 })
 
 Then('I got communicat, that I type Wrong username or password', ()=>{
-    ActionsLogin.verify_alert()
+    LoginAction.verifyAlert()
 })
 
 Then('I type the username', ()=>{
-    ActionsLogin.enter_username(ActionsConfig.set_username())
+    LoginAction.enterUsername(ConfigAction.setUsername())
 })
 
 Then('I check if I am on {string} page', (pageHeader)=>{
-    GeneralActions.checkPageHeader(pageHeader)
+    GeneralAction.checkPageHeader(pageHeader)
 })
 
 And('I click the login button', ()=>{
-    ActionsLogin.click_login()
+    LoginAction.clickLogin()
 })

@@ -1,8 +1,11 @@
 import { isUndefined } from "lodash";
 import LoginLocator from "../../locators/login.locator";
+import GeneralLocator from '../../locators/general.locator'
+import WarehouseAlertsLocator from '../../locators/warehousealerts.locator'
+import ConfigAction from "./actions.config";
 
 
-var GeneralActions={
+var GeneralAction={
 
 getDate: function() {
     var now     = new Date(); 
@@ -20,7 +23,7 @@ getDate: function() {
      return date;
     },
 
- getTime: function() {
+getTime: function() {
     var now     = new Date(); 
     var hour    = now.getHours();
     var minute  = now.getMinutes();
@@ -47,27 +50,103 @@ navigateToView: function(firstMenuButton, secondMenuButton){
      cy.get(LoginLocator.hamburgerMenu()).click()
      
      if(isUndefined(secondMenuButton)){
-          cy.get('[class="icon-text"]').contains(firstMenuButton).click({force: true})
+          cy.get(firstMenuButton).click({force: true})
+          
      }else {
-     cy.get('[class="icon-text"]').contains(firstMenuButton).click({force: true})
-     cy.get('[class="icon-text"]').contains(secondMenuButton).click({force: true})
-     }
-},
+          cy.get(firstMenuButton).click({force: true})
+          cy.get(secondMenuButton).click({force: true})
+          }
+     },
 
 checkPageHeader: function(pageHeader){
      cy.get('[class="title-text"]')
-     .should('have.text', pageHeader)
-},
+          .should('have.text', pageHeader)
+     },
 
 clearInput: function(locator){
      cy.get(locator).clear()
-        .should('be.empty')
-},
+          .should('be.empty')
+     },
 
 doesntExist: function(locator, text){
-          cy.get(locator)
-            .should('not.contain.text', text)
-}
+     cy.get(locator)
+          .should('not.contain.text', text)
+     },
+
+checkCheckbox: function(locator){
+     cy.get(locator)
+          .find('input')
+          .should('not.be.checked')
+          .check({force: true})
+          .should('be.checked')
+     },
+
+uncheckCheckbox: function(locator){
+     cy.get(locator)
+          .find('input')
+          .should('be.checked')
+          .uncheck({force: true})
+          .should('not.be.checked')
+     },
+ 
+checkToast: function(toast){
+     cy.get(GeneralLocator.toastContainer())
+          .should('contain', toast)
+     },
+
+chooseFromSearchContainer: function (item){
+     cy.get(GeneralLocator.fastSearchContainer())
+          .contains(item)
+          .click({force: true})
+     },
+// bedzie działało jeśli bedą dodane QA ID 
+isItInSearchContainer: function(element){
+     GeneralAction.clearInput(GeneralLocator.simpleSearchInput())
+     cy.typeText(GeneralLocator.simpleSearchInput(), element)
+     cy.forceClick(GeneralLocator.simpleSearchIcon())
+     GeneralAction.doesntExist(GeneralLocator.emptySearchContainer(), element)
+     },
+
+openHistorylog: function(){
+     cy.get('[class="mat-tab-label-content"]')
+          .contains('Historia')
+          .click()
+     },
+  
+openFunctionlog: function(){
+     cy.get('[class="mat-tab-label-content"]')
+          .contains("Czynności")
+          .click()
+     },     
+
+checkData: function(data){
+     const numbOfData = data.rawTable.length
+     
+     for (var i=0;i<numbOfData;i++){
+          cy.get(GeneralLocator.dataCard())
+               .should('contain.text', data.rawTable[i][0])
+          cy.wait(100)
+          }
+     },
+
+checkHistoryLog: function(data){
+     const numbOfData = data.rawTable.length
+     cy.wait(300)
+     for (var i=0;i<numbOfData;i++){
+          cy.get('gls-generic-log-tile')
+               .find('[class="card"]')
+               .eq(0)
+               .should('contain.text', data.rawTable[i][0])
+          }
+     cy.get('gls-generic-log-tile')
+          .find('[class="card"]')
+          .eq(0)
+          .should('contain.text', ConfigAction.setUsername()) 
+     cy.get('gls-generic-log-tile')
+          .find('[class="card"]')
+          .eq(0)
+          .should('contain.text', GeneralAction.getDate())    
+     }
 
 } 
-export default GeneralActions
+export default GeneralAction

@@ -1,12 +1,12 @@
 /// <reference types="cypress" />
 
-import ActionsLogin from '../../pages/actions.login'
-import ActionsConfig from '../../pages/supporting-methods/actions.config'
-import ActionsRolesManage from '../../pages/actions.rolesmanage'
+import LoginAction from '../../pages/actions.login'
+import ConfigAction from '../../pages/supporting-methods/actions.config'
 import RolesManageLocator from '../../locators/rolesmanage.locator'
-import GeneralActions from '../../pages/supporting-methods/actions.general'
-import MenuButtons from '../../constants/menubuttons.constants'
+import MenuButtons from '../../locators/menubuttons.locator'
 import RolesManageAction from '../../pages/actions.rolesmanage'
+import GeneralLocator from '../../locators/general.locator'
+import GeneralAction from '../../pages/supporting-methods/actions.general'
 
 
 
@@ -15,11 +15,11 @@ When('I click add role button', ()=>{
 })
 
 When('I click add button', ()=>{
-    cy.forceClick(RolesManageLocator.save_button())
+    cy.forceClick(GeneralLocator.saveButton())
 })
-
+//zmienic na WarehouseAlertsLocator.simpleSearchInput() jak dodadza QA ID
 When('I type a {string} to fast search', (role)=>{
-    cy.typeText(RolesManageLocator.search_input(),role)
+    cy.typeText(RolesManageLocator.searchInput(),role)
 })
 
 When('I click delete role button', ()=>{
@@ -27,11 +27,11 @@ When('I click delete role button', ()=>{
 })
 
 When('I clear search input', ()=>{
-    GeneralActions.clearInput(RolesManageLocator.search_input())
+    GeneralAction.clearInput(RolesManageLocator.searchInput())
 })
 
 When('I open history log', ()=>{
-    ActionsRolesManage.open_historylog()
+    GeneralAction.openHistorylog()
 })
 
 When('I click edite role button', ()=>{
@@ -39,18 +39,18 @@ When('I click edite role button', ()=>{
 })
 
 When('I get back to functions', ()=>{
-    RolesManageAction.open_functionlog()
+    GeneralAction.openFunctionlog()
 })
 
 When('I delete all created roles', ()=>{
     RolesManageAction.clearAllCreatedRoles()
 })
-
+//zmienic na metode isItInSearchContainer jak dodadzą QA ID
 Then('I check does created roles doesn\'t exist', ()=>{
-    GeneralActions.clearInput(RolesManageLocator.search_input())
-    cy.typeText(RolesManageLocator.search_input(),'TC_')
-    cy.forceClick(RolesManageLocator.fast_search())
-    GeneralActions.doesntExist('[id="agGrid"]', 'TC_' )
+    GeneralAction.clearInput(RolesManageLocator.searchInput())
+    cy.typeText(RolesManageLocator.searchInput(),'TC_')
+    cy.forceClick(RolesManageLocator.fastSearch())
+    GeneralAction.doesntExist(GeneralLocator.emptySearchContainer(), 'TC_' )
 })
 
 Then('Compare permissions with System role', ()=>{
@@ -58,17 +58,17 @@ Then('Compare permissions with System role', ()=>{
 })
 
 Then('I choose permission {string}',(permission)=>{
-    ActionsRolesManage.choose_permission(permission)
+    RolesManageAction.choosePermission(permission)
 })
 
 Then('I check is toast {string} appear',(toast)=>{
-    cy.checkToast(toast)
+    GeneralAction.checkToast(toast)
 })
 
 Then('I login on user with Managing role and permissions', ()=>{
-    ActionsLogin.enter_username(ActionsConfig.set_username())
-    ActionsLogin.enter_password(ActionsConfig.set_password())
-    ActionsLogin.click_login()
+    LoginAction.enterUsername(ConfigAction.setUsername())
+    LoginAction.enterPassword(ConfigAction.setPassword())
+    LoginAction.clickLogin()
 })
 
 Then('I click delete permissions from role', ()=>{
@@ -76,19 +76,15 @@ Then('I click delete permissions from role', ()=>{
 })
 
 Then('I check is {string} contain {string} permission', (role,permission)=>{
-    ActionsRolesManage.check_existing_permission(permission)
+    RolesManageAction.checkExistingPermission(permission)
 })
 
 Then('I click add permissions to role', ()=>{
     cy.forceClick(RolesManageLocator.addPermissionsToRole())
 })
 
-Then('I check is log history for {string} contains {string} permission and {string} header' , (role,permission,header )=>{
-    cy.checkHistoryLog(header,permission)
-})
-
 And('I clear dropdownelements', ()=>{
-    GeneralActions.deleteFieldsWBuckets(RolesManageLocator.glsdropdContainer())
+    GeneralAction.deleteFieldsWBuckets(RolesManageLocator.glsdropdContainer())
 })
 
 And('I type a {string} to {string} permissions' , (roleName,func)=>{
@@ -96,11 +92,11 @@ And('I type a {string} to {string} permissions' , (roleName,func)=>{
 }),
 
 And('I choose {string} to {string} permissions', (roleName,func)=>{
-    ActionsRolesManage.choose_permission(roleName)
+    RolesManageAction.choosePermission(roleName)
 })
 
 And('I navigate to role manage page', ()=>{
-    GeneralActions.navigateToView(MenuButtons.settings, MenuButtons.roleManage)
+    GeneralAction.navigateToView(MenuButtons.settings, MenuButtons.roleManage)
 })
 
 And('I type a {string} permission to {string}', (permission,func)=>{
@@ -116,30 +112,30 @@ And('I type {string} into description field', (roleDescription)=>{
 })
 
 And('I type permission {string}', (permission)=>{
-    cy.typeText(RolesManageLocator.permission_input(), permission)
+    cy.typeText(RolesManageLocator.permissionInput(), permission)
     cy.wait(1000)
 })
-
+//zmienic na GeneralLocator.simpleSearchIcon() jak dodadza QA ID
 And('I click search button', ()=>{
-    cy.forceClick(RolesManageLocator.fast_search())
+    cy.forceClick(RolesManageLocator.fastSearch())
 })
 
-And('I choose {string} from rolebox', (role)=>{
-    ActionsRolesManage.choose_role_from_search(role)
+And('I choose {string} from search container', (role)=>{
+    GeneralAction.chooseFromSearchContainer(role)
 })
 
 And('I click save button', ()=>{
-    cy.forceClick(RolesManageLocator.save_button())
+    cy.forceClick(GeneralLocator.saveButton())
 })
 
 And('I click delete button', ()=>{
-    cy.forceClick(RolesManageLocator.deleteButton())
+    cy.forceClick(GeneralLocator.deleteButton())
 })
 
 And('I clear description', ()=>{
-    GeneralActions.clearInput(RolesManageLocator.description())
+    GeneralAction.clearInput(RolesManageLocator.description())
 })
 
 And('I click edite button', ()=>{
-    cy.forceClick(RolesManageLocator.editeButton())
+    cy.forceClick(GeneralLocator.editeButton())
 })

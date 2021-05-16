@@ -10,37 +10,29 @@ var RolesManageLocator={
         return '[data-qa-id="role-description"]'
     },
 
-    permission_input: function(){
+    permissionInput: function(){
         return '[data-qa-id="dropdown-search-input"]'
     },
 
-    permission_listbox: function (){
+    permissionListbox: function (){
         return '[role="listbox"]'
                 
     },
 
-    save_button: function(){
-        return '[data-qa-id="save-button"]'
-    },
-
-    delete_button: function(){
-        return '[data-qa-id="save-button"]'
-    },
-
-    search_input: function(){
+    searchInput: function(){
         return 'input[type="text"]'
     },
     
-    search_container: function(){
+    searchContainer: function(){
         return '[class="ag-center-cols-container"]'
     },
 
-    fast_search: function(){
+    fastSearch: function(){
         return '.search'
         //return '[class="mat-tooltip-trigger project-icon action-icon search"]'
     },
 
-    role_permissions_row: function (){
+    rolePermissionsRow: function (){
         return '[class="mat-row cdk-row ng-star-inserted"]'
     },
 
@@ -48,17 +40,11 @@ var RolesManageLocator={
         return '[data-qa-id="remove-role-action"]'
     },
 
-    deleteButton: function(){
-        return '[data-qa-id="save-button"]'
-    },
-
     editeRole: function(){
         return '[data-qa-id="edit-role-action"]'
     },
 
-    editeButton: function(){
-        return '[data-qa-id="save-button"]'
-    },
+    
 // kontener z dodanymi uprawnieniami
     glsdropdContainer: function (){
         return '[data-qa-id="gls-dropdown"]'

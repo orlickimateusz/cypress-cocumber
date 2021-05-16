@@ -5,19 +5,19 @@ export const environmentChanger = Environment.environment248
 export const userChanger = LoginConstants.user248
 export const passwordChanger = LoginConstants.password248
 
-var ConfigActions={
+var ConfigAction={
 
-    set_environment: function(){
+    setEnvironment: function(){
        return environmentChanger
     },
 
-    set_username: function (){
+    setUsername: function (){
         return userChanger
     },
 
-    set_password: function (){
+    setPassword: function (){
         return passwordChanger
     }
 
 }
-export default ConfigActions
+export default ConfigAction

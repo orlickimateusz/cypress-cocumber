@@ -18,7 +18,7 @@ var LoginLocator ={
     logoutButton: function(){
         return '[data-qa-id="logout-button"]'
     },
-    login_logo: function(){
+    loginLogo: function(){
         return '[class="logo"]'
     },
 

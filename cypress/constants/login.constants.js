@@ -7,7 +7,7 @@ const LoginConstants ={
     password97: 'Admin13!',
     
     alert: "Niepoprawny login lub hasło",
-    wrong_username: '999999999'
+    wrongUsername: '999999999'
     
     
 }
