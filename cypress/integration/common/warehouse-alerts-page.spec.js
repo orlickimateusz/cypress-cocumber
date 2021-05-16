@@ -7,7 +7,7 @@ import WarehouseAlertsAction from '../../pages/actions.warehousealerts'
 import LoginAction from '../../pages/actions.login'
 import ConfigAction from '../../pages/supporting-methods/actions.config'
 
-When('I close extended search alert window', ()=>{
+Given('I close extended search alert window', ()=>{
     cy.get('[class="mat-dialog-title"]').should('have.text', 'Wyszukiwarka alertów')
     cy.get(GeneralLocator.cancelButton()).click()
 })
@@ -27,6 +27,10 @@ When('I type {string} into alert name field', (alertName)=>{
 
 When('I delete all created alerts', ()=>{
     WarehouseAlertsAction.clearAllCreatedAlerts()
+})
+
+When('I click delete alert button', ()=>{
+    cy.forceClick(WarehouseAlertsLocator.deleteWarehouseAlert())
 })
 
 Then('I click add event.reason alert button', ()=>{
