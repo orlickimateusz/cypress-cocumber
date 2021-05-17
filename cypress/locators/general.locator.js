@@ -41,7 +41,11 @@ var GeneralLocator={
     },
     deactivateButton: function(){
         return '[data-qa-id="save-button"]'
-    }
+    },
+    rolebox: function (){
+        return '[role="listbox"]'
+                
+    },
     
 }
 

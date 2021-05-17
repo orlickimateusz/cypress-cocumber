@@ -151,7 +151,14 @@ checkHistoryLog: function(data){
 checkCommunicat: function(locator, communicat){
      cy.get(locator)
           .should('contain', communicat)
-     }     
+     },
+     
+chooseFromRolebox: function(element){
+     cy.get(GeneralLocator.rolebox())
+          .children()
+          .contains(element)
+          .click({force:true})
+     },     
 
 
 } 

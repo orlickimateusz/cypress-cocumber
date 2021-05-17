@@ -4,13 +4,6 @@ import RolesManageLocator from '../locators/rolesmanage.locator'
 import GeneralAction from '../pages/supporting-methods/actions.general'
 
 var RolesManageAction={
-    
-choosePermission: function(permission){
-    cy.get(RolesManageLocator.permissionListbox())
-        .children()
-        .contains(permission)
-        .click({force:true})
-    },
 
 checkExistingPermission: function (permission){
     cy.get(RolesManageLocator.rolePermissionsRow())

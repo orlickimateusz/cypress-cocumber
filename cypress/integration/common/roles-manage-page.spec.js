@@ -58,7 +58,7 @@ Then('Compare permissions with System role', ()=>{
 })
 
 Then('I choose permission {string}',(permission)=>{
-    RolesManageAction.choosePermission(permission)
+    GeneralAction.chooseFromRolebox(permission)
 })
 
 Then('I check is toast {string} appear',(toast)=>{
@@ -92,7 +92,8 @@ And('I type a {string} to {string} permissions' , (roleName,func)=>{
 }),
 
 And('I choose {string} to {string} permissions', (roleName,func)=>{
-    RolesManageAction.choosePermission(roleName)
+    GeneralAction.chooseFromRolebox(roleName)
+    // RolesManageAction.choosePermission(roleName)
 })
 
 And('I navigate to role manage page', ()=>{

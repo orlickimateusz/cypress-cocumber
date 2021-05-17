@@ -42,6 +42,14 @@ When('I confirm to activate alert', ()=>{
     cy.forceClick(GeneralLocator.activateButton())
 })
 
+When('I type {string} depot', (depot)=>{
+    cy.typeText(GeneralLocator.dropdownInput(),depot).click()
+})
+
+Then('I click add depot to alert button', ()=>{
+    cy.forceClick(WarehouseAlertsLocator.addDepotsToWarrehouseAlert())
+})
+
 Then('I click activate alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.activateWarehouseAlert())
 })
@@ -110,4 +118,8 @@ And('I clear massage input', ()=>{
 
 And('I navigate to warehouse alerts page', ()=>{
     GeneralAction.navigateToView(MenuButtons.settings, MenuButtons.warehouseAlerts)
+})
+
+And('I choose {string}', (depot)=>{
+    GeneralAction.chooseFromRolebox(depot)
 })
