@@ -146,7 +146,13 @@ checkHistoryLog: function(data){
           .find('[class="card"]')
           .eq(0)
           .should('contain.text', GeneralAction.getDate())    
-     }
+     },
+
+checkCommunicat: function(locator, communicat){
+     cy.get(locator)
+          .should('contain', communicat)
+     }     
+
 
 } 
 export default GeneralAction

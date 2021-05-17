@@ -14,7 +14,7 @@ var GeneralLocator={
     deleteButton: function(){
         return '[data-qa-id="save-button"]'
     },
-    activeButton: function(){
+    activateButton: function(){
         return '[data-qa-id="save-button"]'
     },
     dropdownInput: function(){
@@ -38,6 +38,9 @@ var GeneralLocator={
 
     dataCard: function(){
         return '[class="card"]'
+    },
+    deactivateButton: function(){
+        return '[data-qa-id="save-button"]'
     }
     
 }

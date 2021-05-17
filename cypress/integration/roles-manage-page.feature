@@ -14,7 +14,7 @@ Feature: Features in manage roles
     Then I check if I am on "Zarządzanie rolami" page
 
 
-  Scenario: Add role
+  Scenario: TC_01: Add role
 
     When I click add role button
     And I type a "TC_01 Business Role"
@@ -33,7 +33,7 @@ Feature: Features in manage roles
       | Utworzono rolę             |
       | Uprawnienia:  Dane kuriera |
 
-  Scenario: Delete role
+  Scenario: TC_02: Delete role
 
     When I click add role button
     And I type a "TC_02 Business Role"
@@ -58,7 +58,7 @@ Feature: Features in manage roles
     Then I check is toast " Usunięto rolę " appear
 
 
-  Scenario: Edite role
+  Scenario: TC_03: Edite role
 
     When I click add role button
     And I type a "TC_03 Business Role"
@@ -89,7 +89,7 @@ Feature: Features in manage roles
 
 
 
-  Scenario: Add permissions to role
+  Scenario: TC_04: Add permissions to role
 
     When I click add role button
     And I type a "TC_04 Business Role"
@@ -105,8 +105,8 @@ Feature: Features in manage roles
     Then I check is "TC_04 Business Role" contain "Deaktywowanie użytkowników" permission
     When I open history log
     Then I check is log history for "TC_04 Business Role" contains:
-  | Utworzono rolę                           |
-  | Uprawnienia:  Deaktywowanie użytkowników |
+      | Utworzono rolę                           |
+      | Uprawnienia:  Deaktywowanie użytkowników |
     When I get back to functions
     Then I click add permissions to role
     When I type a "TC_04 Business Role" to "add" permissions
@@ -117,11 +117,11 @@ Feature: Features in manage roles
     Then I check is toast " Dodano uprawnienia do ról " appear
     When I open history log
     Then I check is log history for "TC_04 Business Role" contains:
-  | Dodano uprawnienia do roli |
-  | Deaktywowanie użytkowników |
+      | Dodano uprawnienia do roli |
+      | Deaktywowanie użytkowników |
 
 
-  Scenario: Delete permissions from role
+  Scenario: TC_05: Delete permissions from role
 
     When I click add role button
     And I type a "TC_05 Business Role"
@@ -155,7 +155,7 @@ Feature: Features in manage roles
 
 
 
-  Scenario: Check does all System Roles have their permissions
+  Scenario: TC_06: Check does all System Roles have their permissions
 
     Then Compare permissions with System role
 

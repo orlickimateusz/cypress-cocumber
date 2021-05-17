@@ -24,6 +24,9 @@ var LoginLocator ={
 
     hamburgerMenu: function(){
         return '[class="project-icon hamburger"]'
+    },
+    logoutComunnicatContainer: function(){
+        return '[class="mat-dialog-content"]'
     }
     
 }

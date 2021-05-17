@@ -8,6 +8,7 @@ import LoginAction from '../../pages/actions.login'
 import ConfigAction from '../../pages/supporting-methods/actions.config'
 
 Given('I close extended search alert window', ()=>{
+    cy.wait(200)
     cy.get('[class="mat-dialog-title"]').should('have.text', 'Wyszukiwarka alertów')
     cy.get(GeneralLocator.cancelButton()).click()
 })
@@ -33,6 +34,18 @@ When('I click delete alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.deleteWarehouseAlert())
 })
 
+When('I confirm to deactivate alert', ()=>{
+    cy.forceClick(GeneralLocator.deactivateButton())
+})
+
+When('I confirm to activate alert', ()=>{
+    cy.forceClick(GeneralLocator.activateButton())
+})
+
+Then('I click activate alert button', ()=>{
+    cy.forceClick(WarehouseAlertsLocator.activateWarehouseAlert())
+})
+
 Then('I click add event.reason alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.addWarehouseAlert())
 })
@@ -53,6 +66,10 @@ Then('I check is {string} contains:',(name, data)=>{
 
 Then('I check is log history for {string} contains:', (name, data)=>{
     GeneralAction.checkHistoryLog(data)
+})
+
+Then('I click deactivate alert button', ()=>{
+    cy.forceClick(WarehouseAlertsLocator.deactiveWarehouseAlert())
 })
 
 And('I choose {string} alert level', (alertLevel)=>{
