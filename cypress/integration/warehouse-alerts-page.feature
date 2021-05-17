@@ -11,6 +11,7 @@ Feature: Feature in Warehouse Alerts
         When I check if I am on "Alerty Magazynowe" page
         Then I close extended search alert window
 
+
     Scenario: TC_01: Add event.reason alert
 
         When I click add event.reason alert button
@@ -93,6 +94,7 @@ Feature: Feature in Warehouse Alerts
             | Nazwa alertu:  TC_02 Alert event.reason modified    |
             | Poziom alertu:  WARNING                             |
             | Treść alertu:  The alert message has been modified. |
+
 
     Scenario: TC_03: Delete event.reason alert
 
@@ -219,7 +221,6 @@ Feature: Feature in Warehouse Alerts
         When I get back to functions
         Then I click activate alert button
         When I confirm to activate alert
-
         Then I check is toast "Aktywowano alert pomyślnie" appear
         When I clear search input
         And I type a "TC_05 Alert event.reason" to fast search

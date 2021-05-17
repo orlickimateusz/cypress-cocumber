@@ -33,6 +33,7 @@ Feature: Features in manage roles
       | Utworzono rolę             |
       | Uprawnienia:  Dane kuriera |
 
+
   Scenario: TC_02: Delete role
 
     When I click add role button
@@ -151,8 +152,6 @@ Feature: Features in manage roles
     Then I check is log history for "TC_05 Business Role" contains:
       | Usunięto uprawnienia z roli |
       | Dane kasjera                |
-
-
 
 
   Scenario: TC_06: Check does all System Roles have their permissions
