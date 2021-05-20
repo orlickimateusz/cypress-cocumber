@@ -7,6 +7,8 @@ import WarehouseAlertsAction from '../../pages/actions.warehousealerts'
 import LoginAction from '../../pages/actions.login'
 import ConfigAction from '../../pages/supporting-methods/actions.config'
 
+
+
 Given('I close extended search alert window', ()=>{
     cy.wait(200)
     cy.get('[class="mat-dialog-title"]').should('have.text', 'Wyszukiwarka alertów')
@@ -26,10 +28,6 @@ When('I type {string} into alert name field', (alertName)=>{
     expect(WarehouseAlertsLocator.alertName()).to.not.be.empty
 })
 
-When('I delete all created alerts', ()=>{
-    WarehouseAlertsAction.clearAllCreatedAlerts()
-})
-
 When('I click delete alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.deleteWarehouseAlert())
 })
@@ -46,6 +44,10 @@ When('I type {string} depot', (depot)=>{
     cy.typeText(GeneralLocator.dropdownInput(),depot).click()
 })
 
+When('I delete all created alerts', ()=>{
+    WarehouseAlertsAction.clearAllCreatedAlerts()
+})
+
 Then('I click add depot to alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.addDepotsToWarrehouseAlert())
 })
@@ -56,10 +58,6 @@ Then('I click activate alert button', ()=>{
 
 Then('I click add event.reason alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.addWarehouseAlert())
-})
-
-Then('I check does created {string} doesn\'t exist', (name)=>{
-    GeneralAction.isItInSearchContainer('TC_')
 })
 
 Then('I login on user with Managing warehouse alerts', ()=>{
@@ -78,6 +76,10 @@ Then('I check is log history for {string} contains:', (name, data)=>{
 
 Then('I click deactivate alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.deactiveWarehouseAlert())
+})
+
+Then('I check does created {string} doesn\'t exist', (name)=>{
+    GeneralAction.isItInSearchContainer('TC_')
 })
 
 And('I choose {string} alert level', (alertLevel)=>{
@@ -117,7 +119,7 @@ And('I clear massage input', ()=>{
 })
 
 And('I navigate to warehouse alerts page', ()=>{
-    GeneralAction.navigateToView(MenuButtons.settings, MenuButtons.warehouseAlerts)
+    GeneralAction.navigateToView(MenuButtons.settings(), MenuButtons.warehouseAlerts())
 })
 
 And('I choose {string}', (depot)=>{

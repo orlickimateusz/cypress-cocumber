@@ -154,9 +154,9 @@ Feature: Features in manage roles
       | Dane kasjera                |
 
 
-  Scenario: TC_06: Check does all System Roles have their permissions
+  # Scenario: TC_06: Check does all System Roles have their permissions
 
-    Then Compare permissions with System role
+  #   Then Compare permissions with System role
 
 
   Scenario: After all - I delete all created data

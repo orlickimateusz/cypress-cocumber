@@ -9,7 +9,6 @@ import GeneralLocator from '../../locators/general.locator'
 import GeneralAction from '../../pages/supporting-methods/actions.general'
 
 
-
 When('I click add role button', ()=>{
     cy.forceClick(RolesManageLocator.addRole())
 })
@@ -93,11 +92,10 @@ And('I type a {string} to {string} permissions' , (roleName,func)=>{
 
 And('I choose {string} to {string} permissions', (roleName,func)=>{
     GeneralAction.chooseFromRolebox(roleName)
-    // RolesManageAction.choosePermission(roleName)
 })
 
 And('I navigate to role manage page', ()=>{
-    GeneralAction.navigateToView(MenuButtons.settings, MenuButtons.roleManage)
+    GeneralAction.navigateToView(MenuButtons.settings(), MenuButtons.roleManage())
 })
 
 And('I type a {string} permission to {string}', (permission,func)=>{

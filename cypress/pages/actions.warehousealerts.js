@@ -1,8 +1,7 @@
 import WarehouseAlertsLocator from "../locators/warehousealerts.locator"
 import GeneralLocator from '../locators/general.locator'
-import GeneralActions from '../pages/supporting-methods/actions.general'
-
-var WarehouseAlertsActions={
+import GeneralAction from '../pages/supporting-methods/actions.general'
+var WarehouseAlertsAction={
 
 chooseAlertLevel: function(alertLevel){
     cy.forceClick(WarehouseAlertsLocator.alertLevel())
@@ -18,15 +17,15 @@ clearAllCreatedAlerts: function(){
          const numberOfAddedAlerts = reqResp.response.body.content.length
             if(numberOfAddedAlerts > 0){
                  for(var i=0; i<numberOfAddedAlerts;i++){
-                     GeneralActions.chooseFromSearchContainer('TC_')
+                     GeneralAction.chooseFromSearchContainer('TC_')
                      cy.wait(500)
                      cy.forceClick(WarehouseAlertsLocator.deleteWarehouseAlert())
                      cy.forceClick(GeneralLocator.saveButton())
-                     GeneralActions.checkToast('Usunięto alert pomyślnie')
+                     GeneralAction.checkToast('Usunięto alert pomyślnie')
             }
         }    
     })
  },
 
 }
-export default WarehouseAlertsActions
+export default WarehouseAlertsAction
