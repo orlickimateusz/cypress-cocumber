@@ -63,11 +63,6 @@ checkPageHeader: function(pageHeader){
           .should('have.text', pageHeader)
      },
 
-clearInput: function(locator){
-     cy.get(locator).clear()
-          .should('be.empty')
-     },
-
 doesntExist: function(locator, text){
      cy.get(locator)
           .should('not.contain.text', text)
@@ -101,7 +96,6 @@ chooseFromSearchContainer: function (item){
      },
 // bedzie działało jeśli bedą dodane QA ID 
 isItInSearchContainer: function(element){
-     GeneralAction.clearInput(GeneralLocator.simpleSearchInput())
      cy.typeText(GeneralLocator.simpleSearchInput(), element)
      cy.forceClick(GeneralLocator.simpleSearchIcon())
      GeneralAction.doesntExist(GeneralLocator.emptySearchContainer(), element)

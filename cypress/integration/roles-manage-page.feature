@@ -79,8 +79,7 @@ Feature: Features in manage roles
       | Uprawnienia:  Dodawanie ról |
     When I get back to functions
     Then I click edite role button
-    When I clear description
-    And I type "New description value" into description field
+    When I type "New description value" into description field
     And I click edite button
     Then I check is toast " Edytowano rolę " appear
     When I open history log
@@ -154,9 +153,9 @@ Feature: Features in manage roles
       | Dane kasjera                |
 
 
-  # Scenario: TC_06: Check does all System Roles have their permissions
+  Scenario: TC_06: Check does all System Roles have their permissions
 
-  #   Then Compare permissions with System role
+    Then Compare permissions with System role
 
 
   Scenario: After all - I delete all created data

@@ -25,10 +25,6 @@ When('I click delete role button', ()=>{
     cy.forceClick(RolesManageLocator.deleteRole())
 })
 
-When('I clear search input', ()=>{
-    GeneralAction.clearInput(RolesManageLocator.searchInput())
-})
-
 When('I open history log', ()=>{
     GeneralAction.openHistorylog()
 })
@@ -46,7 +42,7 @@ When('I delete all created roles', ()=>{
 })
 //zmienic na metode isItInSearchContainer jak dodadzą QA ID
 Then('I check does created roles doesn\'t exist', ()=>{
-    GeneralAction.clearInput(RolesManageLocator.searchInput())
+    //GeneralAction.clearInput(RolesManageLocator.searchInput())
     cy.typeText(RolesManageLocator.searchInput(),'TC_')
     cy.forceClick(RolesManageLocator.fastSearch())
     GeneralAction.doesntExist(GeneralLocator.emptySearchContainer(), 'TC_' )
@@ -131,9 +127,9 @@ And('I click delete button', ()=>{
     cy.forceClick(GeneralLocator.deleteButton())
 })
 
-And('I clear description', ()=>{
-    GeneralAction.clearInput(RolesManageLocator.description())
-})
+// And('I clear description', ()=>{
+//     GeneralAction.clearInput(RolesManageLocator.description())
+// })
 
 And('I click edite button', ()=>{
     cy.forceClick(GeneralLocator.editeButton())

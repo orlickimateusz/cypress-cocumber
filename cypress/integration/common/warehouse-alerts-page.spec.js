@@ -15,6 +15,10 @@ Given('I close extended search alert window', ()=>{
     cy.get(GeneralLocator.cancelButton()).click()
 })
 
+Given('I delete all alerts', ()=>{
+    WarehouseAlertsAction.clearAllCreatedAlerts('   ')
+})
+
 When('I click modify event.reason alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.editeWarehouseAlert())
 })
@@ -45,11 +49,19 @@ When('I type {string} depot', (depot)=>{
 })
 
 When('I delete all created alerts', ()=>{
-    WarehouseAlertsAction.clearAllCreatedAlerts()
+    WarehouseAlertsAction.clearAllCreatedAlerts('TC_')
+})
+
+When('I click add serwis alert button', ()=>{
+    cy.forceClick(WarehouseAlertsLocator.addAlertService())
 })
 
 Then('I click add depot to alert button', ()=>{
     cy.forceClick(WarehouseAlertsLocator.addDepotsToWarrehouseAlert())
+})
+
+Then('I click delete depot from alert button', ()=>{
+    cy.forceClick(WarehouseAlertsLocator.deleteDepotsFromAlert())
 })
 
 Then('I click activate alert button', ()=>{
@@ -82,6 +94,10 @@ Then('I check does created {string} doesn\'t exist', (name)=>{
     GeneralAction.isItInSearchContainer('TC_')
 })
 
+Then('I check is {string} message appear', (message)=>{
+    GeneralAction.checkCommunicat('[id="warehouse-add-edit-alert"]' ,message)
+})
+
 And('I choose {string} alert level', (alertLevel)=>{
     WarehouseAlertsAction.chooseAlertLevel(alertLevel)
 })
@@ -102,10 +118,6 @@ And('I check speech synthesizer signal', ()=>{
     GeneralAction.checkCheckbox(WarehouseAlertsLocator.speechSynthesizer())
 })
 
-And('I clear alert name input', ()=>{
-    GeneralAction.clearInput(WarehouseAlertsLocator.alertName())
-})
-
 And('I uncheck sound signal', ()=>{
     GeneralAction.uncheckCheckbox(WarehouseAlertsLocator.soundSignal())
 })
@@ -114,14 +126,18 @@ And('I uncheck vibration signal', ()=>{
     GeneralAction.uncheckCheckbox(WarehouseAlertsLocator.vibrationSignal())
 })
 
-And('I clear massage input', ()=>{
-    GeneralAction.clearInput(WarehouseAlertsLocator.communicatContent())
-})
-
 And('I navigate to warehouse alerts page', ()=>{
     GeneralAction.navigateToView(MenuButtons.settings(), MenuButtons.warehouseAlerts())
 })
 
 And('I choose {string}', (depot)=>{
     GeneralAction.chooseFromRolebox(depot)
+})
+
+And('I type {string} into enable by event reasons field', (eventNum)=>{
+    cy.typeText(WarehouseAlertsLocator.enableByEventReasons(), eventNum)
+})
+
+And ('I type {string} into enable by service field', (serviceName)=>{
+    cy.typeText(WarehouseAlertsLocator.services(), serviceName)
 })

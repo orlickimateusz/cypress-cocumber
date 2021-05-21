@@ -10,6 +10,8 @@ Cypress.Commands.add('forceClick', (locator)=>{
 
 Cypress.Commands.add('typeText', (locator,text)=>{
     cy.get(locator)
+        .clear()
+        .should('be.empty')
         .type(text)
         .should('have.value', text)    
 })

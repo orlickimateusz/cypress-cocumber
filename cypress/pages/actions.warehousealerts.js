@@ -9,15 +9,16 @@ chooseAlertLevel: function(alertLevel){
     cy.get(WarehouseAlertsLocator.alertLevel()).should('have.text', alertLevel)   
 },
 
-clearAllCreatedAlerts: function(){
+clearAllCreatedAlerts: function(alertName){
     cy.intercept('POST', 'https://10.250.0.248/settings/v1/protected/warehouse/alert/criteria').as('getItem')
-    cy.typeText(GeneralLocator.simpleSearchInput(),'TC_')
+    cy.typeText(GeneralLocator.simpleSearchInput(),alertName)
     cy.forceClick(GeneralLocator.simpleSearchIcon())
     cy.wait('@getItem').then(reqResp=>{
          const numberOfAddedAlerts = reqResp.response.body.content.length
+         
             if(numberOfAddedAlerts > 0){
                  for(var i=0; i<numberOfAddedAlerts;i++){
-                     GeneralAction.chooseFromSearchContainer('TC_')
+                     //GeneralAction.chooseFromSearchContainer(alertName)
                      cy.wait(500)
                      cy.forceClick(WarehouseAlertsLocator.deleteWarehouseAlert())
                      cy.forceClick(GeneralLocator.saveButton())

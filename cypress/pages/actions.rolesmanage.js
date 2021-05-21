@@ -33,7 +33,6 @@ clearAllCreatedRoles: function(){
 checkAllPermissionsForSystemRoles: function(){
     const numOfSystemRoles = Object.values(SystemRoles).length
         for(var i=0;i<numOfSystemRoles;i++){
-            GeneralAction.clearInput(RolesManageLocator.searchInput())
             cy.typeText(RolesManageLocator.searchInput(), SystemRoles[i].rolename)
             cy.forceClick(RolesManageLocator.fastSearch())
             GeneralAction.chooseFromSearchContainer(SystemRoles[i].rolename)

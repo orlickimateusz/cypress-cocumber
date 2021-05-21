@@ -1,6 +1,5 @@
 Feature: Login to application
 
-    I want to Login to application
 
     Scenario: TC_01: Succesfully Login to application
         Given I Navigate to the website
